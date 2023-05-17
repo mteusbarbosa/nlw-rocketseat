@@ -13,6 +13,24 @@ datasource db {
 //model é como se fosse a tabela
 model User {
   //@id é a chave primaria; uuid é o id gerado aleatoriamente e único
-  id   String @id @default(uuid())
-  name String
+  id        String   @id @default(uuid())
+  //@unique significa que o valor não pode se repetir na tabela
+  githubId  Int      @unique
+  name      String
+  login     String
+  avatarUrl String
+  //Um usuário pode ter várias memórias
+  Memory    Memory[]
+}
+
+model Memory {
+  id     String @id @default(uuid())
+  userId String
+
+  coverUrl  String
+  content   String
+  isPublic  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  //Relacionamento da tabela usuário com a tabela memória, aqui é a chave extrangeira
+  user      User     @relation(fields: [userId], references: [id])
 }
