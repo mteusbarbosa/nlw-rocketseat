@@ -1,11 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import {
-  ImageBackground,
-  Text,
-  Touchable,
-  TouchableOpacity,
-  View,
-} from 'react-native'
+import { ImageBackground, Text, TouchableOpacity, View } from 'react-native'
 
 import {
   useFonts,
